@@ -48,7 +48,7 @@
 
 button.keypad {
   width: 70px;
-  height: 40px;
+  height: 46px;
   margin: 1px 0;
   border-radius: 10px;
   border: solid 1px gray;
@@ -58,6 +58,7 @@ button.keypad {
   justify-content: center;
   align-items: center;  
   box-shadow: 0 2px #999;
+  font-size: 20px;
   font-weight: 400;
 }
 button.keypad:active {

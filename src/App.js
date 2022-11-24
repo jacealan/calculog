@@ -30,8 +30,6 @@ function App() {
 
   const onKeyDown = (event) => {
     event.preventDefault()
-    console.log(event.key)
-    console.log(event)
     const key = event.key
     if (key === "Enter" || key === "=") {
       try {
