@@ -160,6 +160,17 @@ function App() {
           /
         </button>
       </div>
+
+      <style jsx>{`
+        .App {
+          position: relative;
+          width: 360px;
+          height: ${document.documentElement.clientHeight}px;
+          background-color: black;
+          color: white;
+          text-align: center;
+        }
+      `}</style>
     </div>
   )
 }
