@@ -71,7 +71,14 @@ function App() {
   return (
     <div className="App" onKeyDown={onKeyDown}>
       <div className="title">저장소</div>
-      <div className="memo">memo</div>
+      <div className="memos">
+        <div className="memo">1234513</div>
+        <div className="memo">2234513</div>
+        <div className="memo">1234513</div>
+        <div className="memo">2234513</div>
+        <div className="memo">1234513</div>
+        <div className="memo">2234513</div>
+      </div>
       <div className="title">계산기록</div>
       <div className="log" ref={logBoxRef}>
         {log.map((line, index) => (
@@ -169,6 +176,18 @@ function App() {
           background-color: black;
           color: white;
           text-align: center;
+        }
+
+        .log {
+          height: ${document.documentElement.clientHeight - 410}px;;
+          margin-bottom: 5px;
+          padding: 5px 10px;
+          background-color: beige;
+          color: black;
+          text-align: left;
+          font-size: 18px;
+          word-break: break-all;
+          overflow-y: auto;
         }
       `}</style>
     </div>
