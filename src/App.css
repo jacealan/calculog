@@ -1,12 +1,3 @@
-/* .App {
-  position: relative;
-  width: 360px;
-  height: 100vh;
-  background-color: black;
-  color: white;
-  text-align: center;
-} */
-
 .title {
   padding-top: 5px;
   font-size: 8px;
@@ -22,11 +13,17 @@
 }
 .memo {
   height: 30px;
+  border-radius: 10px;
   background-color: beige;
+  box-shadow: 0 2px #999; 
   color: black;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.memo:active {
+  transform: translateY(1px);
+  font-weight: 500;
 }
 
 .typed {
@@ -63,7 +60,7 @@
 
 .buttons {
   position: absolute;
-  bottom: 0;
+  bottom: 1px;
   left: 0;
   margin: 2px;
   width: calc(100% - 4px);
@@ -90,8 +87,6 @@ button.keypad {
   font-weight: 400;
 }
 button.keypad:active {
-  /* background-color: #3e8e41;
-  box-shadow: 0 5px #666; */
   transform: translateY(1px);
   font-weight: 500;
 }

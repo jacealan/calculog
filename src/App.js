@@ -85,8 +85,6 @@ function App() {
           <div key={index}>{line}</div>
         ))}
       </div>
-
-      <div className="title">CalcuLog</div>
       <div className="typed" ref={typedBoxRef}>
         {typed}
       </div>
@@ -179,8 +177,9 @@ function App() {
         }
 
         .log {
-          height: ${document.documentElement.clientHeight - 410}px;;
-          margin-bottom: 5px;
+          height: ${document.documentElement.clientHeight - 410}px;
+          margin: 2px;
+          border-radius: 5px;
           padding: 5px 10px;
           background-color: beige;
           color: black;
