@@ -1,7 +1,10 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import "./App.css"
 
 function App() {
+  const logBoxRef = useRef(null)
+  const typedBoxRef = useRef(null)
+  const [log, setLog] = useState([])
   const [typed, setTyped] = useState("")
 
   const onClick = (event) => {
@@ -12,6 +15,7 @@ function App() {
     if (name === "=") {
       try {
         eval(typed)
+        setLog([...log, typed, `=${eval(typed)}`])
         setTyped((prev) => eval(prev))
       } catch {
         console.log("error")
@@ -25,8 +29,12 @@ function App() {
     } else {
       setTyped((prev) => prev + name)
     }
-    console.log(typed)
   }
+
+  useEffect(() => {
+    logBoxRef.current.scrollTop = logBoxRef.current.scrollHeight
+    typedBoxRef.current.scrollTop = typedBoxRef.current.scrollHeight
+  }, [log, typed])
 
   const onKeyDown = (event) => {
     event.preventDefault()
@@ -34,6 +42,7 @@ function App() {
     if (key === "Enter" || key === "=") {
       try {
         eval(typed)
+        setLog([...log, typed, `=${eval(typed)}`])
         setTyped((prev) => eval(prev))
       } catch {
         console.log("error")
@@ -50,7 +59,9 @@ function App() {
       key === "-" ||
       key === "*" ||
       key === "/" ||
-      key === "%"
+      key === "%" ||
+      key === "(" ||
+      key === ")"
     ) {
       setTyped((prev) => prev + key)
     }
@@ -62,11 +73,32 @@ function App() {
       <div className="title">저장소</div>
       <div className="memo">memo</div>
       <div className="title">계산기록</div>
-      <div className="log">log</div>
+      <div className="log" ref={logBoxRef}>
+        {log.map((line, index) => (
+          <div key={index}>{line}</div>
+        ))}
+      </div>
 
       <div className="title">CalcuLog</div>
-      <div className="typed">{typed}</div>
+      <div className="typed" ref={typedBoxRef}>
+        {typed}
+      </div>
       <div className="buttons">
+        <button className="keypad" name="clear" onClick={onClick}>
+          Clear<div style={{ fontSize: "8px" }}>[esc]</div>
+        </button>
+        <button className="keypad" name="back" onClick={onClick}>
+          ⬅
+        </button>
+        <button className="keypad" name="(" onClick={onClick}>
+          (
+        </button>
+        <button className="keypad" name=")" onClick={onClick}>
+          )
+        </button>
+        <button className="keypad" name="%" onClick={onClick}>
+          %<div style={{ fontSize: "8px" }}>나머지</div>
+        </button>
         <button className="keypad" name="" onClick={onClick}>
           ?
         </button>
@@ -126,21 +158,6 @@ function App() {
         </button>
         <button className="keypad" name="/" onClick={onClick}>
           /
-        </button>
-        <button className="keypad" name="" onClick={onClick}>
-          ?
-        </button>
-        <button className="keypad" name="0" onClick={onClick}>
-          0
-        </button>
-        <button className="keypad" name="back" onClick={onClick}>
-          ⬅
-        </button>
-        <button className="keypad" name="clear" onClick={onClick}>
-          Clear<div style={{ fontSize: "8px" }}>[esc]</div>
-        </button>
-        <button className="keypad" name="%" onClick={onClick}>
-          %<div style={{ fontSize: "8px" }}>나머지</div>
         </button>
       </div>
     </div>
