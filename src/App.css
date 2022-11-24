@@ -1,7 +1,7 @@
 .App {
   position: relative;
   width: 360px;
-  height: 780px;
+  height: 100vh;
   background-color: black;
   color: white;
   text-align: center;
