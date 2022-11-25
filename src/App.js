@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react"
-import { DeleteForever } from "@styled-icons/material"
+import { DeleteForever, SmartButton } from "@styled-icons/material"
 import "./App.css"
 
 function App() {
@@ -106,47 +106,67 @@ function App() {
 
   return (
     <div className="App" onKeyDown={onKeyDown}>
-      <div className="title">Quick Number</div>
-      <div className="memos">
+      {/* <div className="title">Quick Number</div> */}
+      <div className="quick_numbers">
         {quickNum.map((num, index) => (
-          <div className="memo" key={index}>
-            <div onClick={() => setTyped((prev) => prev + quickNum[index])} style={{width: "100px", textAlign: "left"}}>
+          <div className="quick_number" key={index}>
+            <div
+              onClick={() => setTyped((prev) => prev + quickNum[index])}
+              style={{
+                width: "100px",
+                textAlign: "left",
+                color: "white",
+                cursor: "pointer",
+              }}
+            >
               {num.length > 8 ? `${num.slice(0, 7)}…` : num}
             </div>
-            <div
+            <DeleteForever
+              size="24"
+              color="#ddd"
+              style={{ cursor: "pointer" }}
               onClick={() => {
                 const newQuickNum = [...quickNum]
                 newQuickNum.splice(index, 1)
                 setQuickNum([...newQuickNum])
               }}
-            >
-              <DeleteForever size="16" />
-            </div>
+            />
           </div>
         ))}
 
         {empty.slice(0, 6 - quickNum.length).map((num, index) => (
-          <div className="memo" key={index}>
-            _
+          <div className="quick_number_empty" key={index}>
+            Quick Number
           </div>
         ))}
       </div>
-      <div className="title">Log of Calc</div>
+      {/* <div className="title">Log of Calc</div> */}
       <div className="log" ref={logBoxRef}>
         {log.map((line, index) => (
           <div key={index}>
             {line}
             {index === log.length - 1 ? (
-              <span style={{ fontSize: "8px" }}> (ans2btn)</span>
+              <SmartButton
+                size="24"
+                color="#285430"
+                onClick={ans2btn}
+                style={{ cursor: "pointer" }}
+              />
             ) : null}
           </div>
         ))}
+              <div className="log-title">Log of Calc</div>
       </div>
       <div className="typed" ref={typedBoxRef}>
         {typed}
       </div>
       <div className="buttons">
-        <button className="keypad" name="clear" onClick={onClick}>
+        <button
+          className="keypad"
+          name="clear"
+          onClick={onClick}
+          style={{ backgroundColor: "#393E46", color: "white" }}
+        >
           Clear<div style={{ fontSize: "8px" }}>[esc]</div>
         </button>
         <button className="keypad" name="back" onClick={onClick}>
@@ -161,7 +181,12 @@ function App() {
         <button className="keypad" name="%" onClick={onClick}>
           %<div style={{ fontSize: "8px" }}>나머지</div>
         </button>
-        <button className="keypad" name="del" onClick={onClick}>
+        <button
+          className="keypad"
+          name="del"
+          onClick={onClick}
+          style={{ backgroundColor: "#7D5A5A", color: "white" }}
+        >
           Del<div style={{ fontSize: "8px" }}>Log</div>
         </button>
         <button className="keypad" name="7" onClick={onClick}>
@@ -176,7 +201,12 @@ function App() {
         <button className="keypad" name="+" onClick={onClick}>
           +
         </button>
-        <button className="keypad" name="erase" onClick={onClick}>
+        <button
+          className="keypad"
+          name="erase"
+          onClick={onClick}
+          style={{ backgroundColor: "#0F4C75", color: "white" }}
+        >
           Erase<div style={{ fontSize: "8px" }}>QuickNum</div>
         </button>
         <button className="keypad" name="4" onClick={onClick}>
@@ -191,7 +221,12 @@ function App() {
         <button className="keypad" name="-" onClick={onClick}>
           -
         </button>
-        <button className="keypad" name="write" onClick={onClick}>
+        <button
+          className="keypad"
+          name="write"
+          onClick={onClick}
+          style={{ backgroundColor: "#3282B8", color: "white" }}
+        >
           Write<div style={{ fontSize: "8px" }}>ans2btn</div>
         </button>
         <button className="keypad" name="1" onClick={onClick}>
@@ -206,7 +241,12 @@ function App() {
         <button className="keypad" name="*" onClick={onClick}>
           *
         </button>
-        <button className="keypad" name="ans" onClick={onClick}>
+        <button
+          className="keypad"
+          name="ans"
+          onClick={onClick}
+          style={{ backgroundColor: "#285430", color: "white" }}
+        >
           ANS
           <div style={{ fontSize: "8px" }}>
             {ans ? (ans.length > 9 ? `${ans.slice(0, 8)}…` : ans) : "직전답"}
@@ -232,17 +272,19 @@ function App() {
           position: relative;
           width: 360px;
           height: ${document.documentElement.clientHeight}px;
+          border-radius: 10px;
           background-color: black;
           color: white;
           text-align: center;
         }
 
         .log {
-          height: ${document.documentElement.clientHeight - 460}px;
+          position: relative;
+          height: ${document.documentElement.clientHeight - 450}px;
           margin: 2px;
           border-radius: 5px;
           padding: 5px 10px;
-          background-color: beige;
+          background-color: #fff5e4;
           color: black;
           text-align: left;
           font-size: 18px;

@@ -3,18 +3,20 @@
   font-size: 8px;
 }
 
-.memos {
-  height: 60px;
-  margin: 2px;
+.quick_numbers {
+  height: 74px;
+  padding: 5px;
+  border-radius: 10px;
   background-color: black;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2px;
 }
-.memo {
+.quick_number {
   height: 30px;
+  margin-bottom: 3px;
   border-radius: 10px;
-  background-color: beige;
+  background-color: #0F4C75;
   box-shadow: 0 2px #999;
   padding: 0 10px;
   color: black;
@@ -23,14 +25,27 @@
   align-items: center;
   overflow: hidden;
 }
-.memo:active {
-  transform: translateY(1px);
+.quick_number:active {
+  transform: translateY(2px);
   font-weight: 500;
+}
+.quick_number_empty {
+  height: 30px;
+  margin-bottom: 3px;
+  border-radius: 10px;
+  background-color: #3282B8;
+  padding: 0 10px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-size: 6px;
 }
 
 .typed {
   position: absolute;
-  bottom: 291px;
+  bottom: 305px;
   left: 0;
   width: 360px;
   height: 60px;
@@ -60,6 +75,21 @@
   box-shadow: inset 0px 0px 5px white;
 }
 
+.log-title {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 80px;
+  border-radius: 5px;
+  background-color: #7D5A50;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  font-size: 8px;
+  opacity: 0.5;
+}
+
 .buttons {
   position: absolute;
   bottom: 50px;
@@ -74,7 +104,7 @@
 button.keypad {
   width: 70px;
   height: 46px;
-  margin: 1px 0;
+  margin: 1px 0 3px 0;
   border-radius: 10px;
   border: solid 1px gray;
   padding: 5px;
@@ -87,6 +117,7 @@ button.keypad {
   box-shadow: 0 2px #999;
   font-size: 20px;
   font-weight: 400;
+  cursor: pointer;
 }
 button.keypad:active {
   transform: translateY(1px);
