@@ -6,6 +6,7 @@ function App() {
   const typedBoxRef = useRef(null)
   const [log, setLog] = useState([])
   const [typed, setTyped] = useState("")
+  const [ans, setAns] = useState("")
 
   const onClick = (event) => {
     const {
@@ -14,9 +15,10 @@ function App() {
 
     if (name === "=") {
       try {
-        eval(typed)
-        setLog([...log, typed, `=${eval(typed)}`])
-        setTyped((prev) => eval(prev))
+        const answer = `${eval(typed)}`
+        setAns(answer)
+        setLog([...log, typed, `=${answer}`])
+        setTyped(answer)
       } catch {
         console.log("error")
       }
@@ -24,6 +26,8 @@ function App() {
       setTyped("")
     } else if (name === "back") {
       setTyped((prev) => prev.slice(0, -1))
+    } else if (name === "ans") {
+      setTyped((prev) => prev + ans)
     } else if (name === "dot") {
       setTyped((prev) => prev + ".")
     } else {
@@ -41,9 +45,10 @@ function App() {
     const key = event.key
     if (key === "Enter" || key === "=") {
       try {
-        eval(typed)
-        setLog([...log, typed, `=${eval(typed)}`])
-        setTyped((prev) => eval(prev))
+        const answer = `${eval(typed)}`
+        setAns(answer)
+        setLog([...log, typed, `=${answer}`])
+        setTyped(answer)
       } catch {
         console.log("error")
       }
@@ -51,6 +56,8 @@ function App() {
       setTyped("")
     } else if (key === "Backspace") {
       setTyped((prev) => prev.slice(0, -1))
+    } else if (key === "A" || key === "a") {
+      setTyped((prev) => prev + ans)
     } else if (key in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]) {
       setTyped((prev) => prev + key)
     } else if (
@@ -149,8 +156,8 @@ function App() {
         <button className="keypad" name="*" onClick={onClick}>
           *
         </button>
-        <button className="keypad" name="" onClick={onClick}>
-          ?
+        <button className="keypad" name="ans" onClick={onClick}>
+          ANS<div style={{ fontSize: "8px" }}>{ans ? ans : "직전답"}</div>
         </button>
         <button className="keypad" name="0" onClick={onClick}>
           0
