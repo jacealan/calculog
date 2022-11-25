@@ -158,7 +158,10 @@ function App() {
         <div className="log-title">Log of Calc</div>
       </div>
       <div className="typed" ref={typedBoxRef}>
-        {typed}<span style={{ animation: "blink-effect 1s step-end infinite"}}>_</span>
+        {typed}
+        <span style={{ animation: "blink-effect 1s step-end infinite" }}>
+          _
+        </span>
       </div>
       <div className="buttons">
         <button
@@ -170,7 +173,7 @@ function App() {
           Clear<div style={{ fontSize: "8px" }}>[esc]</div>
         </button>
         <button className="keypad" name="back" onClick={onClick}>
-          <ArrowBack size="24"/>
+          <ArrowBack size="24" onClick={onClick} />
         </button>
         <button className="keypad" name="(" onClick={onClick}>
           (
@@ -225,9 +228,16 @@ function App() {
           className="keypad"
           name="write"
           onClick={onClick}
-          style={{ backgroundColor: "#3282B8", color: "white", paddingTop: "8px"  }}
+          style={{
+            backgroundColor: "#3282B8",
+            color: "white",
+            paddingTop: "8px",
+          }}
         >
-          Write<div style={{ fontSize: "8px"}}><SmartButton size="20" style={{marginTop: "-5px"}}/></div>
+          Write
+          <div style={{ fontSize: "8px" }}>
+            <SmartButton size="20" style={{ marginTop: "-5px" }} />
+          </div>
         </button>
         <button className="keypad" name="1" onClick={onClick}>
           1
