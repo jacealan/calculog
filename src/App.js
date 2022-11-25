@@ -186,7 +186,7 @@ function App() {
         }
 
         .log {
-          height: ${document.documentElement.clientHeight - 410}px;
+          height: ${document.documentElement.clientHeight - 420}px;
           margin: 2px;
           border-radius: 5px;
           padding: 5px 10px;
