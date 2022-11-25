@@ -4,27 +4,47 @@ import "./App.css"
 function App() {
   const logBoxRef = useRef(null)
   const typedBoxRef = useRef(null)
+  const empty = ["", "", "", "", "", ""]
   const [quickNum, setQuickNum] = useState([])
   const [log, setLog] = useState([])
   const [typed, setTyped] = useState("")
   const [ans, setAns] = useState("")
 
+  const calc = () => {
+    if (typed !== "") {
+      try {
+        const answer = `${eval(typed)}`
+        setAns(answer)
+        setLog([...log, typed, `=${answer}`])
+        setTyped(answer)
+      } catch {
+        console.log("error")
+      }
+    }
+  }
+
+  const ans2btn = () => {
+    if (ans !== "") {
+      if (quickNum.length < 6) {
+        if (quickNum.includes(ans)) {
+          alert("there is")
+        } else {
+          const newQuickNum = [...quickNum, ans]
+          setQuickNum(newQuickNum)
+        }
+      } else {
+        alert("full")
+      }
+    }
+  }
+
   const onClick = (event) => {
     const {
       target: { name },
     } = event
-    console.log(name)
+
     if (name === "=") {
-      if (typed !== "") {
-        try {
-          const answer = `${eval(typed)}`
-          setAns(answer)
-          setLog([...log, typed, `=${answer}`])
-          setTyped(answer)
-        } catch {
-          console.log("error")
-        }
-      }
+      calc()
     } else if (name === "clear") {
       setTyped("")
     } else if (name === "back") {
@@ -34,10 +54,7 @@ function App() {
     } else if (name === "erase") {
       setQuickNum((prev) => [])
     } else if (name === "write") {
-      if (ans !== "") {
-        const newQuickNum = [...quickNum, ans]
-        setQuickNum(newQuickNum)
-      }
+      ans2btn()
     } else if (name === "ans") {
       setTyped((prev) => prev + ans)
     } else if (name === "dot") {
@@ -55,16 +72,9 @@ function App() {
   const onKeyDown = (event) => {
     event.preventDefault()
     const key = event.key
-    console.log(key)
+
     if (key === "Enter" || key === "=") {
-      try {
-        const answer = `${eval(typed)}`
-        setAns(answer)
-        setLog([...log, typed, `=${answer}`])
-        setTyped(answer)
-      } catch {
-        console.log("error")
-      }
+      calc()
     } else if (key === "Escape") {
       setTyped("")
     } else if (key === "Backspace") {
@@ -74,8 +84,7 @@ function App() {
     } else if (key === "E" || key === "e") {
       setQuickNum([])
     } else if (key === "W" || key === "w") {
-      const newQuickNum = [...quickNum, ans]
-      setQuickNum(newQuickNum)
+      ans2btn()
     } else if (key === "A" || key === "a") {
       setTyped((prev) => prev + ans)
     } else if (key in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]) {
@@ -92,7 +101,6 @@ function App() {
     ) {
       setTyped((prev) => prev + key)
     }
-    console.log(typed)
   }
 
   return (
@@ -101,7 +109,9 @@ function App() {
       <div className="memos">
         {quickNum.map((num, index) => (
           <div className="memo" key={index}>
-            {num.length > 8 ? `${num.slice(0, 7)}…` : num}
+            <div onClick={() => setTyped((prev) => prev + quickNum[index])}>
+              {num.length > 8 ? `${num.slice(0, 7)}…` : num}
+            </div>
             <div
               onClick={() => {
                 const newQuickNum = [...quickNum]
@@ -111,6 +121,12 @@ function App() {
             >
               ⮿
             </div>
+          </div>
+        ))}
+
+        {empty.slice(0, 6 - quickNum.length).map((num, index) => (
+          <div className="memo" key={index}>
+            _
           </div>
         ))}
       </div>
@@ -194,7 +210,6 @@ function App() {
           <div style={{ fontSize: "8px" }}>
             {ans ? (ans.length > 9 ? `${ans.slice(0, 8)}…` : ans) : "직전답"}
           </div>
-          {/* {num.length > 8 ? `${num.slice(0, 7)}…` : num} */}
         </button>
         <button className="keypad" name="0" onClick={onClick}>
           0
