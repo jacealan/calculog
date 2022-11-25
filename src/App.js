@@ -158,7 +158,7 @@ function App() {
         <div className="log-title">Log of Calc</div>
       </div>
       <div className="typed" ref={typedBoxRef}>
-        {typed}
+        {typed}<span style={{ animation: "blink-effect 1s step-end infinite"}}>_</span>
       </div>
       <div className="buttons">
         <button
