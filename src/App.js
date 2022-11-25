@@ -14,13 +14,15 @@ function App() {
     } = event
 
     if (name === "=") {
-      try {
-        const answer = `${eval(typed)}`
-        setAns(answer)
-        setLog([...log, typed, `=${answer}`])
-        setTyped(answer)
-      } catch {
-        console.log("error")
+      if (typed !== "") {
+        try {
+          const answer = `${eval(typed)}`
+          setAns(answer)
+          setLog([...log, typed, `=${answer}`])
+          setTyped(answer)
+        } catch {
+          console.log("error")
+        }
       }
     } else if (name === "clear") {
       setTyped("")
