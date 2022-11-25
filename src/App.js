@@ -4,6 +4,7 @@ import "./App.css"
 function App() {
   const logBoxRef = useRef(null)
   const typedBoxRef = useRef(null)
+  const [quickNum, setQuickNum] = useState([])
   const [log, setLog] = useState([])
   const [typed, setTyped] = useState("")
   const [ans, setAns] = useState("")
@@ -12,7 +13,7 @@ function App() {
     const {
       target: { name },
     } = event
-
+    console.log(name)
     if (name === "=") {
       if (typed !== "") {
         try {
@@ -28,11 +29,20 @@ function App() {
       setTyped("")
     } else if (name === "back") {
       setTyped((prev) => prev.slice(0, -1))
+    } else if (name === "del") {
+      setLog([])
+    } else if (name === "erase") {
+      setQuickNum((prev) => [])
+    } else if (name === "write") {
+      if (ans !== "") {
+        const newQuickNum = [...quickNum, ans]
+        setQuickNum(newQuickNum)
+      }
     } else if (name === "ans") {
       setTyped((prev) => prev + ans)
     } else if (name === "dot") {
       setTyped((prev) => prev + ".")
-    } else {
+    } else if (name !== undefined) {
       setTyped((prev) => prev + name)
     }
   }
@@ -45,6 +55,7 @@ function App() {
   const onKeyDown = (event) => {
     event.preventDefault()
     const key = event.key
+    console.log(key)
     if (key === "Enter" || key === "=") {
       try {
         const answer = `${eval(typed)}`
@@ -58,6 +69,13 @@ function App() {
       setTyped("")
     } else if (key === "Backspace") {
       setTyped((prev) => prev.slice(0, -1))
+    } else if (key === "Delete" || key === "D" || key === "d") {
+      setLog("")
+    } else if (key === "E" || key === "e") {
+      setQuickNum([])
+    } else if (key === "W" || key === "w") {
+      const newQuickNum = [...quickNum, ans]
+      setQuickNum(newQuickNum)
     } else if (key === "A" || key === "a") {
       setTyped((prev) => prev + ans)
     } else if (key in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]) {
@@ -79,19 +97,32 @@ function App() {
 
   return (
     <div className="App" onKeyDown={onKeyDown}>
-      <div className="title">저장소</div>
+      <div className="title">Quick Number</div>
       <div className="memos">
-        <div className="memo">1234513</div>
-        <div className="memo">2234513</div>
-        <div className="memo">1234513</div>
-        <div className="memo">2234513</div>
-        <div className="memo">1234513</div>
-        <div className="memo">2234513</div>
+        {quickNum.map((num, index) => (
+          <div className="memo" key={index}>
+            {num.length > 8 ? `${num.slice(0, 7)}…` : num}
+            <div
+              onClick={() => {
+                const newQuickNum = [...quickNum]
+                newQuickNum.splice(index, 1)
+                setQuickNum([...newQuickNum])
+              }}
+            >
+              ⮿
+            </div>
+          </div>
+        ))}
       </div>
-      <div className="title">계산기록</div>
+      <div className="title">Log of Calc</div>
       <div className="log" ref={logBoxRef}>
         {log.map((line, index) => (
-          <div key={index}>{line}</div>
+          <div key={index}>
+            {line}
+            {index === log.length - 1 ? (
+              <span style={{ fontSize: "8px" }}> (ans2btn)</span>
+            ) : null}
+          </div>
         ))}
       </div>
       <div className="typed" ref={typedBoxRef}>
@@ -113,8 +144,8 @@ function App() {
         <button className="keypad" name="%" onClick={onClick}>
           %<div style={{ fontSize: "8px" }}>나머지</div>
         </button>
-        <button className="keypad" name="" onClick={onClick}>
-          ?
+        <button className="keypad" name="del" onClick={onClick}>
+          Del<div style={{ fontSize: "8px" }}>Log</div>
         </button>
         <button className="keypad" name="7" onClick={onClick}>
           7
@@ -128,8 +159,8 @@ function App() {
         <button className="keypad" name="+" onClick={onClick}>
           +
         </button>
-        <button className="keypad" name="" onClick={onClick}>
-          ?
+        <button className="keypad" name="erase" onClick={onClick}>
+          Erase<div style={{ fontSize: "8px" }}>QuickNum</div>
         </button>
         <button className="keypad" name="4" onClick={onClick}>
           4
@@ -143,8 +174,8 @@ function App() {
         <button className="keypad" name="-" onClick={onClick}>
           -
         </button>
-        <button className="keypad" name="" onClick={onClick}>
-          ?
+        <button className="keypad" name="write" onClick={onClick}>
+          Write<div style={{ fontSize: "8px" }}>ans2btn</div>
         </button>
         <button className="keypad" name="1" onClick={onClick}>
           1
@@ -159,7 +190,11 @@ function App() {
           *
         </button>
         <button className="keypad" name="ans" onClick={onClick}>
-          ANS<div style={{ fontSize: "8px" }}>{ans ? ans : "직전답"}</div>
+          ANS
+          <div style={{ fontSize: "8px" }}>
+            {ans ? (ans.length > 9 ? `${ans.slice(0, 8)}…` : ans) : "직전답"}
+          </div>
+          {/* {num.length > 8 ? `${num.slice(0, 7)}…` : num} */}
         </button>
         <button className="keypad" name="0" onClick={onClick}>
           0
@@ -174,6 +209,7 @@ function App() {
           /
         </button>
       </div>
+      <div className="logo">calculog</div>
 
       <style jsx>{`
         .App {
@@ -186,7 +222,7 @@ function App() {
         }
 
         .log {
-          height: ${document.documentElement.clientHeight - 420}px;
+          height: ${document.documentElement.clientHeight - 460}px;
           margin: 2px;
           border-radius: 5px;
           padding: 5px 10px;
