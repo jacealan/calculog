@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react"
-import { DeleteForever, SmartButton } from "@styled-icons/material"
+import { DeleteForever, SmartButton, ArrowBack } from "@styled-icons/material"
 import "./App.css"
 
 function App() {
@@ -170,7 +170,7 @@ function App() {
           Clear<div style={{ fontSize: "8px" }}>[esc]</div>
         </button>
         <button className="keypad" name="back" onClick={onClick}>
-          ⬅
+          <ArrowBack size="24"/>
         </button>
         <button className="keypad" name="(" onClick={onClick}>
           (
