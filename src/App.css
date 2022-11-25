@@ -7,7 +7,7 @@
   height: 74px;
   padding: 5px;
   border-radius: 10px;
-  background-color: black;
+  background-color: #222;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2px;
@@ -50,6 +50,7 @@
   width: 360px;
   height: 60px;
   margin-bottom: 5px;
+  border-radius: 5px;
   padding: 5px 10px;
   background-color: #ddd;
   color: black;

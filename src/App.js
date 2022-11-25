@@ -273,7 +273,7 @@ function App() {
           width: 360px;
           height: ${document.documentElement.clientHeight}px;
           border-radius: 10px;
-          background-color: black;
+          background-color: #222;
           color: white;
           text-align: center;
         }
