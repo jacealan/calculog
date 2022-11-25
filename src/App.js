@@ -155,7 +155,7 @@ function App() {
             ) : null}
           </div>
         ))}
-              <div className="log-title">Log of Calc</div>
+        <div className="log-title">Log of Calc</div>
       </div>
       <div className="typed" ref={typedBoxRef}>
         {typed}
@@ -225,9 +225,9 @@ function App() {
           className="keypad"
           name="write"
           onClick={onClick}
-          style={{ backgroundColor: "#3282B8", color: "white" }}
+          style={{ backgroundColor: "#3282B8", color: "white", paddingTop: "8px"  }}
         >
-          Write<div style={{ fontSize: "8px" }}>ans2btn</div>
+          Write<div style={{ fontSize: "8px"}}><SmartButton size="20" style={{marginTop: "-5px"}}/></div>
         </button>
         <button className="keypad" name="1" onClick={onClick}>
           1
