@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react"
+import { DeleteForever } from "@styled-icons/material"
 import "./App.css"
 
 function App() {
@@ -109,7 +110,7 @@ function App() {
       <div className="memos">
         {quickNum.map((num, index) => (
           <div className="memo" key={index}>
-            <div onClick={() => setTyped((prev) => prev + quickNum[index])}>
+            <div onClick={() => setTyped((prev) => prev + quickNum[index])} style={{width: "100px", textAlign: "left"}}>
               {num.length > 8 ? `${num.slice(0, 7)}…` : num}
             </div>
             <div
@@ -119,7 +120,7 @@ function App() {
                 setQuickNum([...newQuickNum])
               }}
             >
-              ⮿
+              <DeleteForever size="16" />
             </div>
           </div>
         ))}
