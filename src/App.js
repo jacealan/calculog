@@ -28,7 +28,11 @@ function App() {
   const calc = () => {
     if (typed !== "") {
       try {
-        const answer = `${eval(typed)}`
+        const answerPre = `${eval(typed)}`
+        const answer =
+          answerPre.split(".").length === 2
+            ? `${Number(Number(answerPre).toFixed(13))}`
+            : answerPre
         setAns(answer)
         setLog([...log, typed, `=${answer}`])
         setTyped(answer)
