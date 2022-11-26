@@ -85,7 +85,7 @@
 .log-title {
   position: absolute;
   top: 5px;
-  right: 5px;
+  right: 10px;
   width: 80px;
   border-radius: 5px;
   background-color: #7D5A50;
@@ -97,7 +97,7 @@
   opacity: 0.5;
 }
 
-.buttons {
+.keypads {
   position: absolute;
   bottom: 50px;
   left: 0;
@@ -124,11 +124,16 @@ button.keypad {
   box-shadow: 0 2px #999;
   font-size: 20px;
   font-weight: 400;
+  letter-spacing: -2px;
   cursor: pointer;
 }
 button.keypad:active {
   transform: translateY(1px);
   font-weight: 500;
+}
+button.keypad-info {
+  border: none;
+  font-size: 8px;
 }
 
 .logo {
