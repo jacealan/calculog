@@ -32,7 +32,7 @@ function App() {
         const answerPre = `${eval(typed)}`
         const answer =
           answerPre.split(".").length === 2
-            ? `${Number(Number(answerPre).toFixed(13))}`
+            ? `${Number(Number(answerPre).toFixed(12))}`
             : answerPre
         setAns(answer)
 
