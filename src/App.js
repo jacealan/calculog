@@ -211,7 +211,7 @@ function App() {
         <button className="keypad" name=")" onClick={onClick}>
           )
         </button>
-        <button className="keypad" name="back" onClick={onClick}>
+        <button className="keypad" name="back" onClick={onClick} style={{fontFamily: "sans-serif"}}>
           🡠
         </button>
         <button className="keypad" name="e" onClick={onClick}>
@@ -220,7 +220,7 @@ function App() {
             className="keypad-info"
             name="e"
             onClick={onClick}
-            style={{ backgroundColor: "#ddd" }}
+            style={{ backgroundColor: "#ddd", color: "black" }}
           >
             1.2e+3
           </button>
