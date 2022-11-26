@@ -223,6 +223,14 @@ function App() {
           style={{ fontFamily: "'Noto Sans KR', sans-serif" }}
         >
           ←
+          <button
+            className="keypad-info"
+            name="back"
+            onClick={onClick}
+            style={{ backgroundColor: "#ddd", color: "black" }}
+          >
+            [BS]
+          </button>
         </button>
         <button className="keypad" name="e" onClick={onClick}>
           e
