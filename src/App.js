@@ -211,8 +211,8 @@ function App() {
         <button className="keypad" name=")" onClick={onClick}>
           )
         </button>
-        <button className="keypad" name="back" onClick={onClick} style={{fontFamily: "sans-serif"}}>
-          🡠
+        <button className="keypad" name="back" onClick={onClick} style={{fontFamily: "'Noto Sans KR', sans-serif"}}>
+          🡠←
         </button>
         <button className="keypad" name="e" onClick={onClick}>
           e
