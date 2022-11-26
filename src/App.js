@@ -97,13 +97,6 @@ function App() {
   }
 
   useEffect(() => {
-    setQuickNum(JSON.parse(window.localStorage.getItem("quickNum")))
-    setLog(JSON.parse(window.localStorage.getItem("log")))
-  }, [])
-
-  useEffect(() => {
-    // window.localStorage.setItem("quickNum", JSON.stringify(quickNum))
-    // window.localStorage.setItem("log", JSON.stringify(log))
     logBoxRef.current.scrollTop = logBoxRef.current.scrollHeight
     typedBoxRef.current.scrollTop = typedBoxRef.current.scrollHeight
   }, [quickNum, log, typed])
@@ -159,6 +152,10 @@ function App() {
   }
 
   useEffect(() => {
+    const quickNumberLS = JSON.parse(window.localStorage.getItem("quickNum"))
+    setQuickNum(quickNumberLS ? quickNumberLS : [])
+    const logLS = JSON.parse(window.localStorage.getItem("log"))
+    setLog(logLS ? logLS : [])
     keydownRef.current.focus()
   }, [])
 
