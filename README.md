@@ -1,6 +1,6 @@
 # CalcuLog - Calculator and Log
 
-
+https://calculog.vercel.app/
 
 ## Library
 
@@ -18,3 +18,8 @@
 
 - Handling onKeyDown event on Div elements in React
   - https://bobbyhadz.com/blog/react-onkeydown-div
+
+## Font
+
+- Megrim: https://fonts.google.com/specimen/Megrim?preview.text=Jace&preview.text_type=custom&category=Display
+- Oxygen Mono: https://fonts.google.com/specimen/Oxygen+Mono?preview.text=Jace&preview.text_type=custom&query=oxygen

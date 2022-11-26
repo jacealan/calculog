@@ -24,6 +24,7 @@ function App() {
   const [ans, setAns] = useState("")
   const clicked = useRef(false)
   const keydownRef = useRef(null)
+  const [showUsage, setShowUsage] = useState(false)
 
   const calc = () => {
     if (typed !== "") {
@@ -395,7 +396,44 @@ function App() {
           /
         </button>
       </div>
-      <div className="logo">calculog</div>
+      <div className="logo">
+        <button
+          className="usage-btn"
+          onClick={() => {
+            setShowUsage(true)
+          }}
+        >
+          ⓘ
+        </button>
+        calculog
+      </div>
+      <button
+        className="usage"
+        onClick={() => {
+          setShowUsage(false)
+        }}
+      >
+        사용법
+        <ul>
+          <li>키패드 클릭 또는 터치</li>
+          <li>키보드 입력</li>
+        </ul>
+        단축키
+        <ul>
+          <li>ESC : 입력창 지우기</li>
+          <li>D, d : 계산기록(Log) 지우기</li>
+          <li>
+            R, r
+            <br />: 빠른입력버튼(Quick Number) 지우기
+          </li>
+          <li>W, r : 최근답을 빠른입력버튼에 기록</li>
+          <li>A, a : 직전답(ANS)</li>
+          <li>
+            Shift + 1,2,3,4,5,6
+            <br />: 빠른입력1,2,3,4,5,6
+          </li>
+        </ul>
+      </button>
 
       <style jsx>
         {`
@@ -424,6 +462,25 @@ function App() {
           .log {
             height: ${document.documentElement.clientHeight - 460}px;
             overflow-y: auto;
+          }
+
+          .usage {
+            position: absolute;
+            z-index: 10;
+            bottom: 0;
+            left: 0;
+            width: 340px;
+            height: 300px;
+            margin: 10px;
+            border-radius: 20px;
+            border: none;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            opacity: 0.8;
+            display: ${showUsage ? "block" : "none"};
+            text-align: left;
+            font-weight: 600;
           }
         `}
       </style>
