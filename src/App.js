@@ -96,7 +96,7 @@ function App() {
 
     if (key === "Enter" || key === "=") {
       calc()
-    } else if (key === "Escape") {
+    } else if (key === "Escape" || key === "C" || key === "c") {
       setTyped("")
     } else if (key === "Backspace") {
       setTyped((prev) => prev.slice(0, -1))
@@ -123,6 +123,18 @@ function App() {
       key === "e"
     ) {
       setTyped((prev) => prev + key)
+    } else if (key === "!" && quickNum.length >= 1) {
+      setTyped((prev) => `${prev}(${quickNum[0]})`)
+    } else if (key === "@" && quickNum.length >= 2) {
+      setTyped((prev) => `${prev}(${quickNum[1]})`)
+    } else if (key === "#" && quickNum.length >= 3) {
+      setTyped((prev) => `${prev}(${quickNum[2]})`)
+    } else if (key === "$" && quickNum.length >= 4) {
+      setTyped((prev) => `${prev}(${quickNum[3]})`)
+    } else if (key === "%" && quickNum.length >= 5) {
+      setTyped((prev) => `${prev}(${quickNum[4]})`)
+    } else if (key === "^" && quickNum.length >= 6) {
+      setTyped((prev) => `${prev}(${quickNum[5]})`)
     }
   }
 
