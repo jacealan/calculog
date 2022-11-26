@@ -196,7 +196,7 @@ function App() {
 
         {empty.slice(0, 6 - quickNum.length).map((num, index) => (
           <div className="quick_number_empty" key={index}>
-            Quick Number
+            Quick Number {index + 1}
           </div>
         ))}
       </div>
