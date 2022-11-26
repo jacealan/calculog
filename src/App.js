@@ -32,7 +32,7 @@ function App() {
         const answerPre = `${eval(typed)}`
         const answer =
           answerPre.split(".").length === 2
-            ? `${Number(Number(answerPre).toFixed(12))}`
+            ? `${Number(Number(answerPre).toFixed(9))}`
             : answerPre
         setAns(answer)
 
@@ -417,7 +417,7 @@ function App() {
         <ul>
           <li>키패드 클릭 또는 터치</li>
           <li>키보드 입력<br />- 입력이 안될 땐 Tab</li>
-          <li>소수는 소수점아래 12자리로 반올림</li>
+          <li>소수는 소수점아래 9자리로 반올림</li>
         </ul>
         단축키
         <ul>
