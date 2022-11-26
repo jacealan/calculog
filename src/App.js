@@ -34,7 +34,11 @@ function App() {
             ? `${Number(Number(answerPre).toFixed(13))}`
             : answerPre
         setAns(answer)
-        setLog([...log, typed, `=${answer}`])
+
+        const newLog = [...log, typed, `=${answer}`]
+        setLog(newLog)
+        window.localStorage.setItem("log", JSON.stringify(newLog))
+
         setTyped(answer)
       } catch {
         console.log("error")
@@ -50,6 +54,7 @@ function App() {
         } else {
           const newQuickNum = [...quickNum, ans]
           setQuickNum(newQuickNum)
+          window.localStorage.setItem("quickNum", JSON.stringify(newQuickNum))
         }
       } else {
         alert("full")
@@ -71,8 +76,10 @@ function App() {
         setTyped((prev) => prev.slice(0, -1))
       } else if (name === "del") {
         setLog([])
+        window.localStorage.setItem("log", JSON.stringify([]))
       } else if (name === "remove") {
         setQuickNum((prev) => [])
+        window.localStorage.setItem("quickNum", JSON.stringify([]))
       } else if (name === "write") {
         ans2btn()
       } else if (name === "ans") {
@@ -90,9 +97,16 @@ function App() {
   }
 
   useEffect(() => {
+    setQuickNum(JSON.parse(window.localStorage.getItem("quickNum")))
+    setLog(JSON.parse(window.localStorage.getItem("log")))
+  }, [])
+
+  useEffect(() => {
+    // window.localStorage.setItem("quickNum", JSON.stringify(quickNum))
+    // window.localStorage.setItem("log", JSON.stringify(log))
     logBoxRef.current.scrollTop = logBoxRef.current.scrollHeight
     typedBoxRef.current.scrollTop = typedBoxRef.current.scrollHeight
-  }, [log, typed])
+  }, [quickNum, log, typed])
 
   const onKeyDown = (event) => {
     event.preventDefault()
@@ -106,8 +120,10 @@ function App() {
       setTyped((prev) => prev.slice(0, -1))
     } else if (key === "Delete" || key === "D" || key === "d") {
       setLog([])
+      window.localStorage.setItem("log", JSON.stringify([]))
     } else if (key === "R" || key === "r") {
       setQuickNum([])
+      window.localStorage.setItem("quickNum", JSON.stringify([]))
     } else if (key === "W" || key === "w") {
       ans2btn()
     } else if (key === "A" || key === "a") {
@@ -170,7 +186,11 @@ function App() {
               onClick={() => {
                 const newQuickNum = [...quickNum]
                 newQuickNum.splice(index, 1)
-                setQuickNum([...newQuickNum])
+                setQuickNum(newQuickNum)
+                window.localStorage.setItem(
+                  "quickNum",
+                  JSON.stringify(newQuickNum)
+                )
               }}
             />
           </div>
