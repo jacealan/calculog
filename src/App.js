@@ -436,6 +436,7 @@ function App() {
             <br />: 빠른입력버튼 1,2,3,4,5,6
           </li>
         </ul>
+        &copy; Jace {new Date().getFullYear()} <a href="mailto:jacealan1@gmail.com" style={{fontWeight: "300"}}>(contact)</a>
       </button>
 
       <style jsx>

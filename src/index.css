@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Megrim&family=Noto+Sans+KR&family=Oxygen+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Megrim&family=Noto+Sans+KR&family=Oxygen+Mono&display=swap");
 
 * {
   user-select: none;
@@ -6,7 +6,7 @@
   font-family: "Oxygen Mono", monospace;
 }
 *:focus {
-  outline: none
+  outline: none;
 }
 
 body {
@@ -22,6 +22,14 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+a,
+a:hover,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: inherit;
 }
