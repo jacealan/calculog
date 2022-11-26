@@ -71,7 +71,7 @@ function App() {
       } else if (name === "write") {
         ans2btn()
       } else if (name === "ans") {
-        setTyped((prev) => prev + ans)
+        setTyped((prev) => `${prev}(${ans})`)
       } else if (name === "dot") {
         setTyped((prev) => prev + ".")
       } else if (name !== undefined) {
@@ -106,7 +106,7 @@ function App() {
     } else if (key === "W" || key === "w") {
       ans2btn()
     } else if (key === "A" || key === "a") {
-      setTyped((prev) => prev + ans)
+      setTyped((prev) => `${prev}(${ans})`)
     } else if (key in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]) {
       setTyped((prev) => prev + key)
     } else if (
