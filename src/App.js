@@ -23,6 +23,7 @@ function App() {
   const [typed, setTyped] = useState("")
   const [ans, setAns] = useState("")
   const clicked = useRef(false)
+  const keydownRef = useRef(null)
 
   const calc = () => {
     if (typed !== "") {
@@ -125,8 +126,12 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    keydownRef.current.focus()
+  }, [])
+
   return (
-    <div className="App" onKeyDown={onKeyDown}>
+    <div className="App" ref={keydownRef} tabIndex={0} onKeyDown={onKeyDown}>
       {/* QUICK NUMBER  */}
       <div className="quick_numbers">
         {quickNum.map((num, index) => (
@@ -211,7 +216,12 @@ function App() {
         <button className="keypad" name=")" onClick={onClick}>
           )
         </button>
-        <button className="keypad" name="back" onClick={onClick} style={{fontFamily: "'Noto Sans KR', sans-serif"}}>
+        <button
+          className="keypad"
+          name="back"
+          onClick={onClick}
+          style={{ fontFamily: "'Noto Sans KR', sans-serif" }}
+        >
           ←
         </button>
         <button className="keypad" name="e" onClick={onClick}>

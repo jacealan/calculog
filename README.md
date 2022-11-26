@@ -13,3 +13,8 @@
 - Styled icons:
   - https://styled-icons.dev/
   - https://github.com/styled-icons/styled-icons
+
+## Ref
+
+- Handling onKeyDown event on Div elements in React
+  - https://bobbyhadz.com/blog/react-onkeydown-div
