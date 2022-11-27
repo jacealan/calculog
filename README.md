@@ -33,4 +33,5 @@ https://calculog.vercel.app/
 - [x] 부동소수점 오류
 - [x] 새로고침 후, Write(ans) 오류
 - [x] Del, Remove 확인 필요
+- [x] `//` 코멘트 -> 수식오류
 - [ ] 오류 점검

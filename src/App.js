@@ -31,7 +31,8 @@ function App() {
 
   const calc = () => {
     if (typed !== "") {
-      try {
+      try {        
+        if (typed.includes("//")) {throw "//"}
         const answerPre = `${eval(typed)}`
         const answer =
           answerPre.split(".").length === 2
@@ -200,8 +201,6 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(logBoxRef.current.scrollTop , logBoxRef.current.scrollHeight)
-    console.log(typedBoxRef.current.scrollTop , typedBoxRef.current.scrollHeight)
     logBoxRef.current.scrollTop = logBoxRef.current.scrollHeight
     typedBoxRef.current.scrollTop = typedBoxRef.current.scrollHeight
   }, [log, typed])
