@@ -498,12 +498,12 @@ function App() {
         단축키
         <ul>
           <li>Enter : =</li>
-          <li>ESC, C, c : 입력창 지우기</li>
-          <li>BackSpace : 입력창 한글자 지우기</li>
-          <li>D, d : 계산기록(Log) 지우기</li>
+          <li>ESC, C, c : 입력창 삭제</li>
+          <li>BackSpace : 입력창 한글자 삭제</li>
+          <li>D, d : 계산기록(Log) 삭제</li>
           <li>
             R, r
-            <br />: 빠른입력(Quick Number) 지우기
+            <br />: 빠른입력(Quick Number) 삭제
           </li>
           <li>W, r : 최근답을 빠른입력버튼에 기록</li>
           <li>A, a : 최근답(ANS)</li>
@@ -511,8 +511,8 @@ function App() {
             Shift + 1,2,3,4,5,6
             <br />: 빠른입력 1,2,3,4,5,6
           </li>
-          <li>Y, y : 계산기록, 빠른입력 지우기 확인</li>
-          <li>N, n : 계산기록, 빠른입력 지우기 취소</li>
+          <li>Y, y : 계산기록,빠른입력 삭제 확인</li>
+          <li>N, n : 계산기록, 빠른입력 삭제 취소</li>
         </ul>
         &copy; Jace(제이스) {new Date().getFullYear()}{" "}
         <a
@@ -527,7 +527,7 @@ function App() {
         <div className="confirm-grid">
           {confirmMethod === "del" ? "계산기록을 " : null}
           {confirmMethod === "remove" ? "빠른입력을 " : null}
-          모두 지울까요?
+          모두 삭제할까요?
           <br />
           <button
             className="confirm-button"
