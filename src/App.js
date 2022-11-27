@@ -148,7 +148,7 @@ function App() {
   }
 
   const onKeyDown = (event) => {
-    event.preventDefault()
+    // event.preventDefault()
     const key = event.key
 
     if (confirmMethod) {
@@ -278,7 +278,7 @@ function App() {
       <div className="log-box">
         <div className="log" ref={logBoxRef}>
           {log.map((line, index) => (
-            <div key={index}>
+            <div className="log-line" key={index}>
               {line[0] === "=" ? "= " + numComma(line.slice(1)) : line}
               {index === log.length - 1 ? (
                 <SmartButton
