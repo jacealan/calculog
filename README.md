@@ -2,8 +2,8 @@
 # CalcuLog - Calculator and Log
 https://calculog.vercel.app/
 
-<img src="https://github.com/jacealan/calculog/blob/main/public/capture1.png?raw=true" width="360px" />
-<img src="https://github.com/jacealan/calculog/blob/main/public/capture2.png?raw=true" width="360px" />
+<img src="https://github.com/jacealan/calculog/blob/main/public/capture_1.png?raw=true" width="360px" />
+<img src="https://github.com/jacealan/calculog/blob/main/public/capture_2.png?raw=true" width="360px" />
 
 ## Library
 
