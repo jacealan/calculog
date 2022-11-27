@@ -507,8 +507,8 @@ function App() {
       {/* CONFIRM */}
       <div className="confirm">
         <div className="confirm-grid">
-          확인이 필요합니다
-          <br />
+          {confirmMethod === "del" ? "계산기록을 " : null}
+          {confirmMethod === "remove" ? "빠른입력을 " : null}
           모두 지울까요?
           <br />
           <button
