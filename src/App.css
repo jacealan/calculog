@@ -1,3 +1,20 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+}
+.Container {
+  position: relative;
+  width: 360px;
+  border-radius: 10px;
+  background-color: #222;
+  color: white;
+  text-align: center;
+}
+
 .title {
   padding-top: 5px;
   font-size: 10px;
