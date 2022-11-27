@@ -204,7 +204,7 @@ function App() {
     const logLS = JSON.parse(window.localStorage.getItem("log"))
     setLog(logLS ? logLS : [])
     const ansLS = window.localStorage.getItem("ans")
-    setAns(ansLS ? ansLS : "")
+    setAns(ansLS ? JSON.parse(ansLS) : "")
     keydownRef.current.focus()
   }, [])
 
