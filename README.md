@@ -35,4 +35,5 @@ https://calculog.vercel.app/
 - [x] Del, Remove 확인 필요
 - [x] `//` 코멘트 -> 수식오류
 - [x] quickNum, log 비었을 때, Del, Remove 확인 불필요
+- [x] confirm 때, 키보드 입력 인식안되게
 - [ ] 오류 점검

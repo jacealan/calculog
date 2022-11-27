@@ -151,63 +151,67 @@ function App() {
     event.preventDefault()
     const key = event.key
 
-    if (key === "Enter" || key === "=") {
-      calc()
-    } else if (
-      (key === "Escape" || key === "C" || key === "c") &&
-      !event.ctrlKey
-    ) {
-      setTyped("")
-    } else if (key === "Backspace") {
-      setTyped((prev) => prev.slice(0, -1))
-    } else if (
-      (key === "Delete" || key === "D" || key === "d") &&
-      JSON.stringify(log) !== JSON.stringify([])
-    ) {
-      setConfirmMethod("del")
-      setShowConfirm(true)
-    } else if (
-      (key === "R" || key === "r") &&
-      !event.ctrlKey &&
-      JSON.stringify(quickNum) !== JSON.stringify([])
-    ) {
-      setConfirmMethod("remove")
-      setShowConfirm(true)
-    } else if ((key === "N" || key === "n") && !event.ctrlKey) {
-      confirmNo()
-    } else if ((key === "Y" || key === "y") && !event.ctrlKey) {
-      confirmYes()
-    } else if (key === "W" || key === "w") {
-      ans2btn()
-    } else if (key === "A" || key === "a") {
-      inputAns()
-    } else if (key in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]) {
-      setTyped((prev) => prev + key)
-    } else if (
-      key === "." ||
-      key === "+" ||
-      key === "-" ||
-      key === "*" ||
-      key === "/" ||
-      key === "%" ||
-      key === "(" ||
-      key === ")" ||
-      key === "E" ||
-      key === "e"
-    ) {
-      setTyped((prev) => prev + key)
-    } else if (key === "!" && quickNum.length >= 1) {
-      inputQuickNum(0)
-    } else if (key === "@" && quickNum.length >= 2) {
-      inputQuickNum(1)
-    } else if (key === "#" && quickNum.length >= 3) {
-      inputQuickNum(2)
-    } else if (key === "$" && quickNum.length >= 4) {
-      inputQuickNum(3)
-    } else if (key === "%" && quickNum.length >= 5) {
-      inputQuickNum(4)
-    } else if (key === "^" && quickNum.length >= 6) {
-      inputQuickNum(5)
+    if (confirmMethod) {
+      if ((key === "N" || key === "n") && !event.ctrlKey) {
+        confirmNo()
+      } else if ((key === "Y" || key === "y") && !event.ctrlKey) {
+        confirmYes()
+      }
+    } else {
+      if (key === "Enter" || key === "=") {
+        calc()
+      } else if (
+        (key === "Escape" || key === "C" || key === "c") &&
+        !event.ctrlKey
+      ) {
+        setTyped("")
+      } else if (key === "Backspace") {
+        setTyped((prev) => prev.slice(0, -1))
+      } else if (
+        (key === "Delete" || key === "D" || key === "d") &&
+        JSON.stringify(log) !== JSON.stringify([])
+      ) {
+        setConfirmMethod("del")
+        setShowConfirm(true)
+      } else if (
+        (key === "R" || key === "r") &&
+        !event.ctrlKey &&
+        JSON.stringify(quickNum) !== JSON.stringify([])
+      ) {
+        setConfirmMethod("remove")
+        setShowConfirm(true)
+      } else if (key === "W" || key === "w") {
+        ans2btn()
+      } else if (key === "A" || key === "a") {
+        inputAns()
+      } else if (key in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]) {
+        setTyped((prev) => prev + key)
+      } else if (
+        key === "." ||
+        key === "+" ||
+        key === "-" ||
+        key === "*" ||
+        key === "/" ||
+        key === "%" ||
+        key === "(" ||
+        key === ")" ||
+        key === "E" ||
+        key === "e"
+      ) {
+        setTyped((prev) => prev + key)
+      } else if (key === "!" && quickNum.length >= 1) {
+        inputQuickNum(0)
+      } else if (key === "@" && quickNum.length >= 2) {
+        inputQuickNum(1)
+      } else if (key === "#" && quickNum.length >= 3) {
+        inputQuickNum(2)
+      } else if (key === "$" && quickNum.length >= 4) {
+        inputQuickNum(3)
+      } else if (key === "%" && quickNum.length >= 5) {
+        inputQuickNum(4)
+      } else if (key === "^" && quickNum.length >= 6) {
+        inputQuickNum(5)
+      }
     }
   }
 
