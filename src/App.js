@@ -152,7 +152,10 @@ function App() {
     const key = event.key
 
     if (confirmMethod) {
-      if ((key === "N" || key === "n") && !event.ctrlKey) {
+      if (
+        ((key === "N" || key === "n") && !event.ctrlKey) ||
+        key === "Escape"
+      ) {
         confirmNo()
       } else if ((key === "Y" || key === "y") && !event.ctrlKey) {
         confirmYes()
