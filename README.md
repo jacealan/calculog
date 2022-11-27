@@ -22,6 +22,7 @@ https://calculog.vercel.app/
 
 - Megrim: https://fonts.google.com/specimen/Megrim?preview.text=Jace&preview.text_type=custom&category=Display
 - Oxygen Mono: https://fonts.google.com/specimen/Oxygen+Mono?preview.text=Jace&preview.text_type=custom&query=oxygen
+- Noto Sans Korean: https://fonts.google.com/noto/specimen/Noto+Sans+KR?preview.text=Jace&preview.text_type=custom&query=noto+sans
 
 ## Issues
 
@@ -31,4 +32,5 @@ https://calculog.vercel.app/
 - [x] ctrl+C로 keydown C 처리됨
 - [x] 부동소수점 오류
 - [x] 새로고침 후, Write(ans) 오류
+- [x] Del, Remove 확인 필요
 - [ ] 오류 점검

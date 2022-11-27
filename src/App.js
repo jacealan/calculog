@@ -25,6 +25,9 @@ function App() {
   const clicked = useRef(false)
   const keydownRef = useRef(null)
   const [showUsage, setShowUsage] = useState(false)
+  const [confirm, setConfirm] = useState(false)
+  const [confirmMethod, setConfirmMethod] = useState(null)
+  const [showConfirm, setShowConfirm] = useState(false)
 
   const calc = () => {
     if (typed !== "") {
@@ -64,6 +67,39 @@ function App() {
     }
   }
 
+  const inputQuickNum = (index) => {
+    quickNum[index][0] === "-"
+      ? setTyped((prev) => `${prev}(${quickNum[index]})`)
+      : setTyped((prev) => `${prev}${quickNum[index]}`)
+  }
+
+  const deleteLog = () => {
+    setLog([])
+    window.localStorage.setItem("log", JSON.stringify([]))
+    setAns("")
+    window.localStorage.setItem("ans", "")
+  }
+
+  const removeQuickNum = () => {
+    setQuickNum((prev) => [])
+    window.localStorage.setItem("quickNum", JSON.stringify([]))
+  }
+
+  const confirmNo = () => {
+    setConfirmMethod(null)
+    setShowConfirm(false)
+  }
+
+  const confirmYes = () => {
+    if (confirmMethod === "del") {
+      deleteLog()
+    } else if (confirmMethod === "remove") {
+      removeQuickNum()
+    }
+    setConfirmMethod(null)
+    setShowConfirm(false)
+  }
+
   const onClick = (event) => {
     const {
       target: { name },
@@ -77,13 +113,13 @@ function App() {
       } else if (name === "back") {
         setTyped((prev) => prev.slice(0, -1))
       } else if (name === "del") {
-        setLog([])
-        window.localStorage.setItem("log", JSON.stringify([]))
-        setAns("")
-        window.localStorage.setItem("ans", "")
+        setConfirmMethod("del")
+        setShowConfirm(true)
+        // deleteLog()
       } else if (name === "remove") {
-        setQuickNum((prev) => [])
-        window.localStorage.setItem("quickNum", JSON.stringify([]))
+        setConfirmMethod("remove")
+        setShowConfirm(true)
+        // removeQuickNum()
       } else if (name === "write") {
         ans2btn()
       } else if (name === "ans") {
@@ -100,11 +136,6 @@ function App() {
     }, 100)
   }
 
-  useEffect(() => {
-    logBoxRef.current.scrollTop = logBoxRef.current.scrollHeight
-    typedBoxRef.current.scrollTop = typedBoxRef.current.scrollHeight
-  }, [quickNum, log, typed])
-
   const onKeyDown = (event) => {
     event.preventDefault()
     const key = event.key
@@ -119,13 +150,15 @@ function App() {
     } else if (key === "Backspace") {
       setTyped((prev) => prev.slice(0, -1))
     } else if (key === "Delete" || key === "D" || key === "d") {
-      setLog([])
-      window.localStorage.setItem("log", JSON.stringify([]))
-      setAns("")
-      window.localStorage.setItem("ans", "")
+      setConfirmMethod("del")
+      setShowConfirm(true)
     } else if ((key === "R" || key === "r") && !event.ctrlKey) {
-      setQuickNum([])
-      window.localStorage.setItem("quickNum", JSON.stringify([]))
+      setConfirmMethod("remove")
+      setShowConfirm(true)
+    } else if ((key === "N" || key === "n") && !event.ctrlKey) {
+      confirmNo()
+    } else if ((key === "Y" || key === "y") && !event.ctrlKey) {
+      confirmYes()
     } else if (key === "W" || key === "w") {
       ans2btn()
     } else if (key === "A" || key === "a") {
@@ -146,26 +179,31 @@ function App() {
     ) {
       setTyped((prev) => prev + key)
     } else if (key === "!" && quickNum.length >= 1) {
-      setTyped((prev) => `${prev}(${quickNum[0]})`)
+      inputQuickNum(0)
     } else if (key === "@" && quickNum.length >= 2) {
-      setTyped((prev) => `${prev}(${quickNum[1]})`)
+      inputQuickNum(1)
     } else if (key === "#" && quickNum.length >= 3) {
-      setTyped((prev) => `${prev}(${quickNum[2]})`)
+      inputQuickNum(2)
     } else if (key === "$" && quickNum.length >= 4) {
-      setTyped((prev) => `${prev}(${quickNum[3]})`)
+      inputQuickNum(3)
     } else if (key === "%" && quickNum.length >= 5) {
-      setTyped((prev) => `${prev}(${quickNum[4]})`)
+      inputQuickNum(4)
     } else if (key === "^" && quickNum.length >= 6) {
-      setTyped((prev) => `${prev}(${quickNum[5]})`)
+      inputQuickNum(5)
     }
   }
+
+  useEffect(() => {
+    logBoxRef.current.scrollTop = logBoxRef.current.scrollHeight
+    typedBoxRef.current.scrollTop = typedBoxRef.current.scrollHeight
+  }, [quickNum, log, typed])
 
   useEffect(() => {
     const quickNumberLS = JSON.parse(window.localStorage.getItem("quickNum"))
     setQuickNum(quickNumberLS ? quickNumberLS : [])
     const logLS = JSON.parse(window.localStorage.getItem("log"))
     setLog(logLS ? logLS : [])
-    const ansLS = JSON.parse(window.localStorage.getItem("ans"))
+    const ansLS = window.localStorage.getItem("ans")
     setAns(ansLS ? ansLS : "")
     keydownRef.current.focus()
   }, [])
@@ -177,11 +215,7 @@ function App() {
         {quickNum.map((num, index) => (
           <div className="quick_number" key={index}>
             <div
-              onClick={() =>
-                quickNum[index][0] === "-"
-                  ? setTyped((prev) => `${prev}(${quickNum[index]})`)
-                  : setTyped((prev) => `${prev}${quickNum[index]}`)
-              }
+              onClick={() => inputQuickNum(index)}
               style={{
                 width: "100px",
                 textAlign: "left",
@@ -415,6 +449,7 @@ function App() {
           /
         </button>
       </div>
+      {/* FOOTER & LOGO */}
       <div className="logo">
         <button
           className="usage-btn"
@@ -426,6 +461,7 @@ function App() {
         </button>
         calculog
       </div>
+      {/* USAGE */}
       <button
         className="usage"
         onClick={() => {
@@ -457,6 +493,8 @@ function App() {
             Shift + 1,2,3,4,5,6
             <br />: 빠른입력 1,2,3,4,5,6
           </li>
+          <li>Y, y : 계산기록, 빠른입력 지우기 확인</li>
+          <li>N, n : 계산기록, 빠른입력 지우기 취소</li>
         </ul>
         &copy; Jace(제이스) {new Date().getFullYear()}{" "}
         <a
@@ -466,6 +504,31 @@ function App() {
           (contact)
         </a>
       </button>
+      {/* CONFIRM */}
+      <div className="confirm">
+        <div className="confirm-grid">
+          확인이 필요합니다
+          <br />
+          모두 지울까요?
+          <br />
+          <button
+            className="confirm-button"
+            tabIndex={-1}
+            name="no"
+            onClick={confirmNo}
+          >
+            아니요(N)
+          </button>
+          <button
+            className="confirm-button"
+            tabIndex={-1}
+            name="yes"
+            onClick={confirmYes}
+          >
+            네(Y)
+          </button>
+        </div>
+      </div>
 
       <style jsx>
         {`
@@ -502,7 +565,7 @@ function App() {
             bottom: 0;
             left: 0;
             width: 340px;
-            height: 400px;
+            height: 500px;
             margin: 10px;
             border-radius: 20px;
             border: none;
@@ -514,6 +577,21 @@ function App() {
             text-align: left;
             font-size: 14px;
             font-weight: 600;
+          }
+
+          .confirm {
+            position: fixed;
+            z-index: 20;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #333;
+            color: white;
+            opacity: 0.9;
+            display: ${showConfirm ? "flex" : "none"};
+            justify-content: center;
+            align-items: center;
           }
         `}
       </style>

@@ -16,7 +16,7 @@
   height: 30px;
   margin-bottom: 3px;
   border-radius: 10px;
-  background-color: #0F4C75;
+  background-color: #0f4c75;
   box-shadow: 0 2px #999;
   padding: 0 10px;
   color: black;
@@ -33,7 +33,7 @@
   height: 30px;
   margin-bottom: 3px;
   border-radius: 10px;
-  background-color: #3282B8;
+  background-color: #3282b8;
   padding: 0 10px;
   color: black;
   display: flex;
@@ -67,16 +67,19 @@
   }
 }
 
-.log::-webkit-scrollbar, .typed::-webkit-scrollbar {
+.log::-webkit-scrollbar,
+.typed::-webkit-scrollbar {
   width: 4px;
 }
-.log::-webkit-scrollbar-thumb, .typed::-webkit-scrollbar-thumb {
+.log::-webkit-scrollbar-thumb,
+.typed::-webkit-scrollbar-thumb {
   background-color: #2f3542;
   border-radius: 4px;
   background-clip: padding-box;
   border: 1px solid transparent;
 }
-.log::-webkit-scrollbar-track, .typed::-webkit-scrollbar-track {
+.log::-webkit-scrollbar-track,
+.typed::-webkit-scrollbar-track {
   background-color: grey;
   border-radius: 4px;
   box-shadow: inset 0px 0px 5px white;
@@ -88,11 +91,11 @@
   right: 10px;
   width: 80px;
   border-radius: 5px;
-  background-color: #7D5A50;
+  background-color: #7d5a50;
   color: white;
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   font-size: 10px;
   opacity: 0.5;
 }
@@ -120,7 +123,7 @@ button.keypad {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   box-shadow: 0 2px #999;
   font-size: 20px;
   font-weight: 400;
@@ -146,7 +149,7 @@ button.keypad-info {
   grid-template-columns: 30px 1fr 30px;
   justify-content: center;
   align-items: center;
-  font-family: 'Megrim', cursive;
+  font-family: "Megrim", cursive;
   font-size: 24px;
 }
 .usage-btn {
@@ -154,4 +157,18 @@ button.keypad-info {
   background-color: #222;
   color: #aaa;
   font-size: 16px;
+}
+
+.confirm-grid {
+  border-radius: 20px;
+  border: solid 2px black;
+  padding: 20px;
+  background-color: #222;
+}
+.confirm-button {
+  border-radius: 10px;
+  border: none;
+  margin: 10px;
+  width: 100px;
+  padding: 10px;
 }
