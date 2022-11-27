@@ -505,6 +505,7 @@ function App() {
             opacity: 0.8;
             display: ${showUsage ? "block" : "none"};
             text-align: left;
+            font-size: 14px;
             font-weight: 600;
           }
         `}
