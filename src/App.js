@@ -35,6 +35,7 @@ function App() {
             ? `${Number(Number(answerPre).toFixed(9))}`
             : answerPre
         setAns(answer)
+        window.localStorage.setItem("ans", JSON.stringify(answer))
 
         const newLog = [...log, typed, `=${answer}`]
         setLog(newLog)
@@ -51,14 +52,14 @@ function App() {
     if (ans !== "") {
       if (quickNum.length < 6) {
         if (quickNum.includes(ans)) {
-          alert("빠른입력버튼에 같은 수가 있습니다")
+          alert("빠른입력에 같은 수가 있습니다")
         } else {
           const newQuickNum = [...quickNum, ans]
           setQuickNum(newQuickNum)
           window.localStorage.setItem("quickNum", JSON.stringify(newQuickNum))
         }
       } else {
-        alert("빠른입력버튼이 모두 사용중입니다")
+        alert("빠른입력이 모두 사용중입니다")
       }
     }
   }
@@ -78,6 +79,8 @@ function App() {
       } else if (name === "del") {
         setLog([])
         window.localStorage.setItem("log", JSON.stringify([]))
+        setAns("")
+        window.localStorage.setItem("ans", "")
       } else if (name === "remove") {
         setQuickNum((prev) => [])
         window.localStorage.setItem("quickNum", JSON.stringify([]))
@@ -118,6 +121,8 @@ function App() {
     } else if (key === "Delete" || key === "D" || key === "d") {
       setLog([])
       window.localStorage.setItem("log", JSON.stringify([]))
+      setAns("")
+      window.localStorage.setItem("ans", "")
     } else if ((key === "R" || key === "r") && !event.ctrlKey) {
       setQuickNum([])
       window.localStorage.setItem("quickNum", JSON.stringify([]))
@@ -160,6 +165,8 @@ function App() {
     setQuickNum(quickNumberLS ? quickNumberLS : [])
     const logLS = JSON.parse(window.localStorage.getItem("log"))
     setLog(logLS ? logLS : [])
+    const ansLS = JSON.parse(window.localStorage.getItem("ans"))
+    setAns(ansLS ? ansLS : "")
     keydownRef.current.focus()
   }, [])
 

@@ -30,4 +30,5 @@ https://calculog.vercel.app/
 - [x] ctrl+R로 keydown R 처리됨
 - [x] ctrl+C로 keydown C 처리됨
 - [x] 부동소수점 오류
+- [x] 장기미사용 시, Write 오류
 - [ ] 오류 점검
