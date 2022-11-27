@@ -161,7 +161,10 @@ function App() {
         key === "Escape"
       ) {
         confirmNo()
-      } else if ((key === "Y" || key === "y") && !event.ctrlKey) {
+      } else if (
+        ((key === "Y" || key === "y") && !event.ctrlKey) ||
+        key === "Enter"
+      ) {
         confirmYes()
       }
     } else {
@@ -232,7 +235,8 @@ function App() {
       setViewHeight(
         document.documentElement.clientHeight < 500
           ? 500
-          : document.documentElement.clientHeight)
+          : document.documentElement.clientHeight
+      )
     })
     const quickNumberLS = JSON.parse(window.localStorage.getItem("quickNum"))
     setQuickNum(quickNumberLS ? quickNumberLS : [])
@@ -548,7 +552,7 @@ function App() {
               계산기록, 빠른입력 삭제 확인창
               <ul>
                 <li>
-                  <code>Y</code>, <code>y</code> : 확인
+                  <code>Y</code>, <code>y</code>, <code>Enter</code> : 확인
                 </li>
                 <li>
                   <code>N</code>, <code>n</code>, <code>ESC</code> : 취소
