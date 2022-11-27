@@ -25,9 +25,9 @@ https://calculog.vercel.app/
 
 ## Issues
 
-[x] `<button onClick><button onClick /></button>` 에서 click 두번처리됨  
-[x] 브라우저 font 최소크기 10px  
-[x] ctrl+R로 keydown R 처리됨  
-[x] ctrl+C로 keydown C 처리됨  
-[x] 부동소수점 오류  
-[ ] 오류 점검
+- [x] `<button onClick><button onClick /></button>` 에서 click 두번처리됨
+- [x] 브라우저 font 최소크기 10px
+- [x] ctrl+R로 keydown R 처리됨
+- [x] ctrl+C로 keydown C 처리됨
+- [x] 부동소수점 오류
+- [ ] 오류 점검
