@@ -318,32 +318,11 @@ function App() {
         <button className="keypad" name=")" onClick={onClick}>
           )
         </button>
-        <button
-          className="keypad"
-          name="back"
-          onClick={onClick}
-          style={{ fontFamily: "'Noto Sans KR', sans-serif" }}
-        >
-          ←
-          <button
-            className="keypad-info"
-            name="back"
-            onClick={onClick}
-            style={{ backgroundColor: "#ddd", color: "black" }}
-          >
-            [BS]
-          </button>
+        <button className="keypad" name="+" onClick={onClick}>
+          +
         </button>
-        <button className="keypad" name="e" onClick={onClick}>
-          e
-          <button
-            className="keypad-info"
-            name="e"
-            onClick={onClick}
-            style={{ backgroundColor: "#ddd", color: "black" }}
-          >
-            1.2e+3
-          </button>
+        <button className="keypad" name="-" onClick={onClick}>
+          -
         </button>
         <button
           className="keypad"
@@ -371,8 +350,8 @@ function App() {
         <button className="keypad" name="9" onClick={onClick}>
           9
         </button>
-        <button className="keypad" name="+" onClick={onClick}>
-          +
+        <button className="keypad" name="*" onClick={onClick}>
+          *
         </button>
         <button
           className="keypad"
@@ -400,8 +379,8 @@ function App() {
         <button className="keypad" name="6" onClick={onClick}>
           6
         </button>
-        <button className="keypad" name="-" onClick={onClick}>
-          -
+        <button className="keypad" name="/" onClick={onClick}>
+          /
         </button>
         <button
           className="keypad"
@@ -435,8 +414,21 @@ function App() {
         <button className="keypad" name="3" onClick={onClick}>
           3
         </button>
-        <button className="keypad" name="*" onClick={onClick}>
-          *
+        <button
+          className="keypad"
+          name="back"
+          onClick={onClick}
+          style={{ fontFamily: "'Noto Sans KR', sans-serif" }}
+        >
+          ←
+          <button
+            className="keypad-info"
+            name="back"
+            onClick={onClick}
+            style={{ backgroundColor: "#ddd", color: "black" }}
+          >
+            [BS]
+          </button>
         </button>
         <button
           className="keypad"
@@ -463,8 +455,16 @@ function App() {
         <button className="keypad" name="=" onClick={onClick}>
           =
         </button>
-        <button className="keypad" name="/" onClick={onClick}>
-          /
+        <button className="keypad" name="e" onClick={onClick}>
+          e
+          <button
+            className="keypad-info"
+            name="e"
+            onClick={onClick}
+            style={{ backgroundColor: "#ddd", color: "black" }}
+          >
+            1.2e+3
+          </button>
         </button>
       </div>
       {/* FOOTER & LOGO */}
