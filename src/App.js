@@ -489,6 +489,7 @@ function App() {
         <div className="logo">
           <button
             className="usage-btn"
+            tabIndex={-1}
             onClick={() => {
               setShowUsage(true)
             }}
@@ -500,6 +501,7 @@ function App() {
         {/* USAGE */}
         <button
           className="usage"
+          tabIndex={-1}
           onClick={() => {
             setShowUsage(false)
           }}
@@ -610,7 +612,7 @@ function App() {
 
           .usage {
             position: absolute;
-            z-index: 10;
+            z-index: ${showUsage ? "10" : "-10"};
             bottom: 0;
             left: 0;
             width: 340px;
@@ -622,7 +624,6 @@ function App() {
             background-color: #333;
             color: white;
             opacity: 0.8;
-            display: ${showUsage ? "block" : "none"};
             text-align: left;
             font-size: 14px;
             font-weight: 600;
@@ -630,7 +631,7 @@ function App() {
 
           .confirm {
             position: fixed;
-            z-index: 20;
+            z-index: ${showConfirm ? "10" : "-10"};
             top: 0;
             left: 0;
             width: 100vw;
@@ -638,7 +639,7 @@ function App() {
             background-color: #333;
             color: white;
             opacity: 0.9;
-            display: ${showConfirm ? "flex" : "none"};
+            display: flex;
             justify-content: center;
             align-items: center;
           }
