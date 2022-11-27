@@ -31,8 +31,10 @@ function App() {
 
   const calc = () => {
     if (typed !== "") {
-      try {        
-        if (typed.includes("//")) {throw "//"}
+      try {
+        if (typed.includes("//")) {
+          throw "//"
+        }
         const answerPre = `${eval(typed)}`
         const answer =
           answerPre.split(".").length === 2
@@ -120,13 +122,15 @@ function App() {
       } else if (name === "back") {
         setTyped((prev) => prev.slice(0, -1))
       } else if (name === "del") {
-        setConfirmMethod("del")
-        setShowConfirm(true)
-        // deleteLog()
+        if (JSON.stringify(log) !== JSON.stringify([])) {
+          setConfirmMethod("del")
+          setShowConfirm(true)
+        }
       } else if (name === "remove") {
-        setConfirmMethod("remove")
-        setShowConfirm(true)
-        // removeQuickNum()
+        if (JSON.stringify(quickNum) !== JSON.stringify([])) {
+          setConfirmMethod("remove")
+          setShowConfirm(true)
+        }
       } else if (name === "write") {
         ans2btn()
       } else if (name === "ans") {
@@ -156,10 +160,17 @@ function App() {
       setTyped("")
     } else if (key === "Backspace") {
       setTyped((prev) => prev.slice(0, -1))
-    } else if (key === "Delete" || key === "D" || key === "d") {
+    } else if (
+      (key === "Delete" || key === "D" || key === "d") &&
+      JSON.stringify(log) !== JSON.stringify([])
+    ) {
       setConfirmMethod("del")
       setShowConfirm(true)
-    } else if ((key === "R" || key === "r") && !event.ctrlKey) {
+    } else if (
+      (key === "R" || key === "r") &&
+      !event.ctrlKey &&
+      JSON.stringify(quickNum) !== JSON.stringify([])
+    ) {
       setConfirmMethod("remove")
       setShowConfirm(true)
     } else if ((key === "N" || key === "n") && !event.ctrlKey) {

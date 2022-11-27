@@ -34,4 +34,5 @@ https://calculog.vercel.app/
 - [x] 새로고침 후, Write(ans) 오류
 - [x] Del, Remove 확인 필요
 - [x] `//` 코멘트 -> 수식오류
+- [x] quickNum, log 비었을 때, Del, Remove 확인 불필요
 - [ ] 오류 점검
