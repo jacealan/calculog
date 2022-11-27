@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react"
-import { DeleteForever, SmartButton, ArrowBack } from "@styled-icons/material"
+import { DeleteForever, SmartButton } from "@styled-icons/material"
 import "./App.css"
 
 const numComma = (num) => {
@@ -25,7 +25,7 @@ function App() {
   const clicked = useRef(false)
   const keydownRef = useRef(null)
   const [showUsage, setShowUsage] = useState(false)
-  const [confirm, setConfirm] = useState(false)
+  // const [confirm, setConfirm] = useState(false)
   const [confirmMethod, setConfirmMethod] = useState(null)
   const [showConfirm, setShowConfirm] = useState(false)
 
@@ -71,6 +71,12 @@ function App() {
     quickNum[index][0] === "-"
       ? setTyped((prev) => `${prev}(${quickNum[index]})`)
       : setTyped((prev) => `${prev}${quickNum[index]}`)
+  }
+
+  const inputAns = (index) => {
+    ans[0] === "-"
+      ? setTyped((prev) => `${prev}(${ans})`)
+      : setTyped((prev) => `${prev}${ans}`)
   }
 
   const deleteLog = () => {
@@ -123,7 +129,7 @@ function App() {
       } else if (name === "write") {
         ans2btn()
       } else if (name === "ans") {
-        setTyped((prev) => `${prev}(${ans})`)
+        inputAns()
       } else if (name === "dot") {
         setTyped((prev) => prev + ".")
       } else if (name !== undefined) {
@@ -162,7 +168,7 @@ function App() {
     } else if (key === "W" || key === "w") {
       ans2btn()
     } else if (key === "A" || key === "a") {
-      setTyped((prev) => `${prev}(${ans})`)
+      inputAns()
     } else if (key in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]) {
       setTyped((prev) => prev + key)
     } else if (
@@ -194,9 +200,11 @@ function App() {
   }
 
   useEffect(() => {
+    console.log(logBoxRef.current.scrollTop , logBoxRef.current.scrollHeight)
+    console.log(typedBoxRef.current.scrollTop , typedBoxRef.current.scrollHeight)
     logBoxRef.current.scrollTop = logBoxRef.current.scrollHeight
     typedBoxRef.current.scrollTop = typedBoxRef.current.scrollHeight
-  }, [quickNum, log, typed])
+  }, [log, typed])
 
   useEffect(() => {
     const quickNumberLS = JSON.parse(window.localStorage.getItem("quickNum"))
