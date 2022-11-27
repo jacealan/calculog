@@ -108,14 +108,17 @@ function App() {
 
     if (key === "Enter" || key === "=") {
       calc()
-    } else if (key === "Escape" || key === "C" || key === "c") {
+    } else if (
+      (key === "Escape" || key === "C" || key === "c") &&
+      !event.ctrlKey
+    ) {
       setTyped("")
     } else if (key === "Backspace") {
       setTyped((prev) => prev.slice(0, -1))
     } else if (key === "Delete" || key === "D" || key === "d") {
       setLog([])
       window.localStorage.setItem("log", JSON.stringify([]))
-    } else if (key === "R" || key === "r") {
+    } else if ((key === "R" || key === "r") && !event.ctrlKey) {
       setQuickNum([])
       window.localStorage.setItem("quickNum", JSON.stringify([]))
     } else if (key === "W" || key === "w") {
@@ -167,7 +170,11 @@ function App() {
         {quickNum.map((num, index) => (
           <div className="quick_number" key={index}>
             <div
-              onClick={() => setTyped((prev) => `${prev}(${quickNum[index]})`)}
+              onClick={() =>
+                quickNum[index][0] === "-"
+                  ? setTyped((prev) => `${prev}(${quickNum[index]})`)
+                  : setTyped((prev) => `${prev}${quickNum[index]}`)
+              }
               style={{
                 width: "100px",
                 textAlign: "left",
@@ -196,7 +203,8 @@ function App() {
 
         {empty.slice(0, 6 - quickNum.length).map((num, index) => (
           <div className="quick_number_empty" key={index}>
-            Quick Number {index + quickNum.length + 1}
+            {/* Quick Number {index + quickNum.length + 1} */}
+            빠른입력 {index + quickNum.length + 1}
           </div>
         ))}
       </div>
@@ -217,7 +225,8 @@ function App() {
             </div>
           ))}
         </div>
-        <div className="log-title">Log of Calc</div>
+        {/* <div className="log-title">Log of Calc</div> */}
+        <div className="log-title">계산기록</div>
       </div>
       {/* TYPED */}
       <div className="typed" ref={typedBoxRef}>
@@ -290,7 +299,8 @@ function App() {
             onClick={onClick}
             style={{ backgroundColor: "#7D5A5A", color: "white" }}
           >
-            Log
+            {/* Log */}
+            계산기록
           </button>
         </button>
         <button className="keypad" name="7" onClick={onClick}>
@@ -318,7 +328,8 @@ function App() {
             onClick={onClick}
             style={{ backgroundColor: "#0F4C75", color: "white" }}
           >
-            QuickNum
+            {/* QuickNum */}
+            빠른입력
           </button>
         </button>
         <button className="keypad" name="4" onClick={onClick}>
@@ -352,7 +363,8 @@ function App() {
               color: "white",
             }}
           >
-            QuickNum
+            {/* QuickNum */}
+            빠른입력
           </button>
         </button>
         <button className="keypad" name="1" onClick={onClick}>
@@ -380,7 +392,7 @@ function App() {
             onClick={onClick}
             style={{ backgroundColor: "#285430", color: "white" }}
           >
-            {ans ? (ans.length > 9 ? `${ans.slice(0, 8)}…` : ans) : "직전답"}
+            {ans ? (ans.length > 9 ? `${ans.slice(0, 8)}…` : ans) : "최근답"}
           </button>
         </button>
         <button className="keypad" name="0" onClick={onClick}>
@@ -416,27 +428,36 @@ function App() {
         사용법
         <ul>
           <li>키패드 클릭 또는 터치</li>
-          <li>키보드 입력<br />- 입력이 안될 땐 Tab</li>
-          <li>소수는 소수점아래 9자리로 반올림</li>
+          <li>
+            키보드 입력
+            <br />- 입력이 안될 땐 Tab
+          </li>
+          <li>소수점아래는 최대 9자리로 반올림됨</li>
         </ul>
         단축키
         <ul>
           <li>Enter : =</li>
-          <li>ESC : 입력창 지우기</li>
+          <li>ESC, C, c : 입력창 지우기</li>
           <li>BackSpace : 입력창 한글자 지우기</li>
           <li>D, d : 계산기록(Log) 지우기</li>
           <li>
             R, r
-            <br />: 빠른입력버튼(Quick Number) 지우기
+            <br />: 빠른입력(Quick Number) 지우기
           </li>
           <li>W, r : 최근답을 빠른입력버튼에 기록</li>
           <li>A, a : 최근답(ANS)</li>
           <li>
             Shift + 1,2,3,4,5,6
-            <br />: 빠른입력버튼 1,2,3,4,5,6
+            <br />: 빠른입력 1,2,3,4,5,6
           </li>
         </ul>
-        &copy; Jace {new Date().getFullYear()} <a href="mailto:jacealan1@gmail.com" style={{fontWeight: "300"}}>(contact)</a>
+        &copy; Jace(제이스) {new Date().getFullYear()}{" "}
+        <a
+          href="mailto:jacealan1@gmail.com"
+          style={{ fontSize: "12px", fontWeight: "300" }}
+        >
+          (contact)
+        </a>
       </button>
 
       <style jsx>
