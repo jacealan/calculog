@@ -250,7 +250,7 @@ function App() {
             onClick={onClick}
             style={{ backgroundColor: "#393E46", color: "white" }}
           >
-            [esc]
+            [ESC]
           </button>
         </button>
         <button className="keypad" name="(" onClick={onClick}>
