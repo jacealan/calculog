@@ -498,28 +498,50 @@ function App() {
           <li>키패드 클릭 또는 터치</li>
           <li>
             키보드 입력
-            <br />- 입력이 안될 땐 Tab
+            <br />- 입력이 안될 땐 <code>Tab</code>
           </li>
           <li>소수점아래는 최대 9자리로 반올림됨</li>
         </ul>
         단축키
         <ul>
-          <li>Enter : =</li>
-          <li>ESC, C, c : 입력창 삭제</li>
-          <li>BackSpace : 입력창 한글자 삭제</li>
-          <li>D, d : 계산기록(Log) 삭제</li>
           <li>
-            R, r
+            <code>Enter</code> : =
+          </li>
+          <li>
+            <code>ESC</code>, <code>C</code>, <code>c</code> : 입력창 삭제
+          </li>
+          <li>
+            <code>BackSpace</code> : 입력창 한글자 삭제
+          </li>
+          <li>
+            <code>D</code>, <code>d</code> : 계산기록(Log) 삭제
+          </li>
+          <li>
+            <code>R</code>, <code>r</code>
             <br />: 빠른입력(Quick Number) 삭제
           </li>
-          <li>W, r : 최근답을 빠른입력버튼에 기록</li>
-          <li>A, a : 최근답(ANS)</li>
           <li>
-            Shift + 1,2,3,4,5,6
+            <code>W</code>, <code>w</code> : 최근답을 빠른입력버튼에 기록
+          </li>
+          <li>
+            <code>A</code>, <code>a</code> : 최근답(ANS)
+          </li>
+          <li>
+            <code>Shift</code> + <code>1</code>,<code>2</code>,<code>3</code>,
+            <code>4</code>,<code>5</code>,<code>6</code>
             <br />: 빠른입력 1,2,3,4,5,6
           </li>
-          <li>Y, y : 계산기록,빠른입력 삭제 확인</li>
-          <li>N, n : 계산기록, 빠른입력 삭제 취소</li>
+          <li>
+            계산기록, 빠른입력 삭제 확인창
+            <ul>
+              <li>
+                <code>Y</code>, <code>y</code> : 확인
+              </li>
+              <li>
+                <code>N</code>, <code>n</code>, <code>ESC</code> : 취소
+              </li>
+            </ul>
+          </li>
         </ul>
         &copy; Jace(제이스) {new Date().getFullYear()}{" "}
         <a

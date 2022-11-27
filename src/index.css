@@ -25,6 +25,10 @@ body {
 }
 
 code {
+  border-radius: 2px;
+  border: solid 1px white;
+  padding: 0 2px;
+  font-size: 12px;
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
