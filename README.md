@@ -1,6 +1,9 @@
+![calculog](https://github.com/jacealan/calculog/blob/main/public/apple-touch-icon.png?raw=true)
 # CalcuLog - Calculator and Log
-
 https://calculog.vercel.app/
+
+![calculog capture1](https://github.com/jacealan/calculog/blob/main/public/capture1.png?raw=true)
+![calculog capture2](https://github.com/jacealan/calculog/blob/main/public/capture2.png?raw=true)
 
 ## Library
 
