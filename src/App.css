@@ -52,8 +52,19 @@
   font-size: 10px;
 }
 
-.log-line {
+.log-equation {
   user-select: text;
+}
+.log-calculated {
+  user-select: text;
+  margin-bottom: 10px;
+}
+.log-answer {
+  user-select: text;
+  border-radius: 15px;
+  padding: 0 10px;
+  background-color: #E5D9B6;
+  font-weight: 100;
 }
 
 .typed {

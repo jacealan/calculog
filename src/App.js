@@ -8,9 +8,9 @@ const numComma = (num) => {
     alert("wrong input")
     return `${num} `
   } else if (str.length === 1) {
-    return `${str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")} `
+    return `${str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
   } else {
-    return `${str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")}.${str[1]} `
+    return `${str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")}.${str[1]}`
   }
 }
 
@@ -294,15 +294,27 @@ function App() {
           <div className="log" ref={logBoxRef}>
             {log.map((line, index) => (
               <div className="log-line" key={index}>
-                {line[0] === "=" ? "= " + numComma(line.slice(1)) : line}
-                {index === log.length - 1 ? (
-                  <SmartButton
-                    size="24"
-                    color="#285430"
-                    onClick={ans2btn}
-                    style={{ cursor: "pointer" }}
-                  />
-                ) : null}
+                {line[0] === "=" ? (
+                  <div className="log-calculated">
+                    =&nbsp;
+                    <span className="log-answer">
+                      {numComma(line.slice(1))}
+                    </span>
+                    {index === log.length - 1 ? (
+                      <>
+                        &nbsp;
+                        <SmartButton
+                          size="24"
+                          color="#285430"
+                          onClick={ans2btn}
+                          style={{ cursor: "pointer" }}
+                        />
+                      </>
+                    ) : null}
+                  </div>
+                ) : (
+                  <div className="log-equation">{line}</div>
+                )}
               </div>
             ))}
           </div>
