@@ -597,14 +597,14 @@ function App() {
 
       <style jsx>
         {`
-        .App {
-          width: 100vw;
-          height: ${viewHeight}px;
-          min-height: 500px;
-          display: flex;
-          justify-content: center;
-          background-color: #333;
-        }
+          .App {
+            width: 100vw;
+            height: ${viewHeight}px;
+            min-height: 500px;
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+          }
           .log-box {
             position: relative;
             height: ${viewHeight - 450}px;
